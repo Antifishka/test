@@ -1,37 +1,51 @@
-const text = "The Tao gave birth to machine language. Machine language gave birth to the assembler. The assembler gave birth to the compiler. Now there are ten thousand languages. Each language has its purpose, however humble. Each language expresses the Yin and Yang of software. Each language has its place within the Tao. But do not program in COBOL if you can avoid it. -- Geoffrey James, 'The Tao of Programming'";
+const form = document.querySelector('.form');
 
-function findUniqueCharacter(text) { 
+form.addEventListener('submit', onFormSubmit);
+
+function onFormSubmit(e) {
+    e.preventDefault();
+
+    const text = e.currentTarget.elements.text.value;
+
+    if (text === '') {
+        alert('Введіть текст для пошуку унікального символа!')
+    };
+
+    // Приклад використання
+    const uniqueSym = findUniqueSymbol(text);
+    console.log('Унікальний символ:', uniqueSym);
+
+    e.currentTarget.reset();
+}
+
+function findUniqueSymbol(text) { 
     // Розділяємо текст на окремі слова
     const words = text.split(/\s+/);
-    const arrChars = [];
+    const arrSyms = [];
 
     for (const word of words) {
-        let firstUniqueChar;
-        const uniqueChars = [];
+        let firstUniqueSym;
+        const uniqueSyms = [];
 
-        for (const char of word) {
+        for (const sym of word) {
             // Перевіряємо, чи є символ унікальним в межах слова
-            if (word.indexOf(char) === word.lastIndexOf(char)) {
-                uniqueChars.push(char);
+            if (word.indexOf(sym) === word.lastIndexOf(sym)) {
+                uniqueSyms.push(sym);
             }
         }
         
         // Зберігаємо перший унікальний символ слова
-        firstUniqueChar = uniqueChars[0];
-        arrChars.push(firstUniqueChar);
+        firstUniqueSym = uniqueSyms[0];
+        arrSyms.push(firstUniqueSym);
     }
     
     // Знаходимо перший унікальний символ серед зібраних символів
-    for (const char of arrChars) {
-        if (arrChars.filter((c) => c === char).length === 1) {
-            return char;
+    for (const sym of arrSyms) {
+        if (arrSyms.filter((s) => s === sym).length === 1) {
+            return sym;
         }
     }
     
     // Якщо не знайдено унікальних символів
     return 'Немає унікальних символів в тексті.';
-}
-
-// Приклад використання
-const uniqueChar = findUniqueCharacter(text);
-console.log('Унікальний символ:', uniqueChar);
+};
