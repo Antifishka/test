@@ -1,4 +1,5 @@
-const form = document.querySelector('.form');
+const form = document.querySelector('.search-form');
+const symbolOutput = document.querySelector('.unique-symbol');
 
 form.addEventListener('submit', onFormSubmit);
 
@@ -13,7 +14,7 @@ function onFormSubmit(e) {
 
     // Приклад використання
     const uniqueSym = findUniqueSymbol(text);
-    console.log('Унікальний символ:', uniqueSym);
+    symbolOutput.textContent = uniqueSym;
 
     e.currentTarget.reset();
 }
@@ -47,5 +48,5 @@ function findUniqueSymbol(text) {
     }
     
     // Якщо не знайдено унікальних символів
-    return 'Немає унікальних символів в тексті.';
+    return 'немає унікальних символів в тексті';
 };

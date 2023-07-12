@@ -1,21 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test</title>
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
     <main>
-        <form class="form">
-            <label>
-                Text
-                <input type="text" name="text" />
-            </label>
-    
-            <button type="submit">Search</button>
-        </form>
+        <section>
+            <h2 class="title">Знайти перший унікальний символ</h2>
+            <form class="search-form">
+                <label> 
+                    <textarea class="search-form__textarea" name="text" rows="8" placeholder="Введіть текст..."></textarea>
+                </label>
+        
+                <button class="search-form__btn" type="submit">Search</button>
+            </form>
+
+            <p class="text">Унікальний символ:
+                <span class="unique-symbol">__</span>
+            </p>
+        </section>
     </main>
+    
     <script src="./js/main.js"></script>
 </body>
 </html>
