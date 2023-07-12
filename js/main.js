@@ -9,8 +9,8 @@ function onFormSubmit(e) {
     const text = e.currentTarget.elements.text.value;
 
     if (text === '') {
-        alert('Введіть текст для пошуку унікального символа!')
-    };
+        return alert('Введіть текст для пошуку унікального символа!');
+    }
 
     // Приклад використання
     const uniqueSym = findUniqueSymbol(text);
@@ -25,7 +25,6 @@ function findUniqueSymbol(text) {
     const arrSyms = [];
 
     for (const word of words) {
-        let firstUniqueSym;
         const uniqueSyms = [];
 
         for (const sym of word) {
@@ -36,17 +35,17 @@ function findUniqueSymbol(text) {
         }
         
         // Зберігаємо перший унікальний символ слова
-        firstUniqueSym = uniqueSyms[0];
+        const firstUniqueSym = uniqueSyms[0];
         arrSyms.push(firstUniqueSym);
     }
     
     // Знаходимо перший унікальний символ серед зібраних символів
     for (const sym of arrSyms) {
-        if (arrSyms.filter((s) => s === sym).length === 1) {
+        if (sym?.length > 0 && arrSyms.indexOf(sym) === arrSyms.lastIndexOf(sym)) {
             return sym;
         }
     }
     
     // Якщо не знайдено унікальних символів
     return 'немає унікальних символів в тексті';
-};
+}
