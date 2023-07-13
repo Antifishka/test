@@ -15,8 +15,6 @@ function onFormSubmit(e) {
     // Приклад використання
     const uniqueSym = findUniqueSymbol(text);
     symbolOutput.textContent = uniqueSym;
-
-    e.currentTarget.reset();
 }
 
 function findUniqueSymbol(text) { 
